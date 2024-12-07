@@ -1,13 +1,14 @@
 package movie.fpoly.mticket.models;
 
-public class Room {
+import java.io.Serializable;
+
+public class Room implements Serializable {
     private int room_id;
     private int cinema_id;
     private String room_name;
 
-    public Room(int room_id, int cinema_id, String room_name) {
+    public Room(int cinema_id, String room_name) {
         this.cinema_id = cinema_id;
-        this.room_id = room_id;
         this.room_name = room_name;
     }
 

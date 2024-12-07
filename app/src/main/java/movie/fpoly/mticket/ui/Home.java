@@ -1,24 +1,18 @@
 package movie.fpoly.mticket.ui;
 
 import android.os.Bundle;
-import android.view.MenuItem;
 
-import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
-import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
 
 import movie.fpoly.mticket.R;
-import movie.fpoly.mticket.adapters.ViewPagerAdapter;
+import movie.fpoly.mticket.adapters_user.ViewPager2Adapter;
 
 public class Home extends AppCompatActivity {
     private ViewPager2 viewPager;
-    private ViewPagerAdapter viewPagerAdapter;
+    private ViewPager2Adapter viewPagerAdapter;
     private BottomNavigationView bottomNavigationView;
 
     @Override
@@ -28,7 +22,7 @@ public class Home extends AppCompatActivity {
 
         viewPager = findViewById(R.id.viewpager);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-        viewPagerAdapter = new ViewPagerAdapter(this);
+        viewPagerAdapter = new ViewPager2Adapter(this);
         viewPager.setAdapter(viewPagerAdapter);
 
         viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {

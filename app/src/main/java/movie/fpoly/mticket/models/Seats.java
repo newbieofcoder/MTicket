@@ -1,6 +1,8 @@
 package movie.fpoly.mticket.models;
 
-public class Seats {
+import java.io.Serializable;
+
+public class Seats implements Serializable {
     private int seat_id;
     private int seat_type;
     private int room_id;

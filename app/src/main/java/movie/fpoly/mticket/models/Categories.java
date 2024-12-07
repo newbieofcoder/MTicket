@@ -1,6 +1,8 @@
 package movie.fpoly.mticket.models;
 
-public class Categories {
+import java.io.Serializable;
+
+public class Categories implements Serializable {
     private int category_id;
     private String category_name;
 

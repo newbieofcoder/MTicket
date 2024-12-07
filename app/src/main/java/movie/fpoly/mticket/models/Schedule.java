@@ -1,15 +1,14 @@
 package movie.fpoly.mticket.models;
 
-import java.sql.Time;
-import java.sql.Date;
+import java.io.Serializable;
 
-public class Schedule {
+public class Schedule implements Serializable {
     private int schedule_id;
     private int movie_id;
     private int room_id;
-    private Date schedule_date;
+    private String schedule_date;
 
-    public Schedule(int schedule_id, int movie_id, int room_id, Date schedule_date) {
+    public Schedule(int schedule_id, int movie_id, int room_id, String schedule_date) {
         this.schedule_id = schedule_id;
         this.movie_id = movie_id;
         this.room_id = room_id;
@@ -43,11 +42,11 @@ public class Schedule {
         this.room_id = room_id;
     }
 
-    public Date getSchedule_date() {
+    public String getSchedule_date() {
         return schedule_date;
     }
 
-    public void setSchedule_date(Date schedule_date) {
+    public void setSchedule_date(String schedule_date) {
         this.schedule_date = schedule_date;
     }
 }

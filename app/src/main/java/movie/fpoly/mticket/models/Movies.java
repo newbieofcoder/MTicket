@@ -1,22 +1,21 @@
 package movie.fpoly.mticket.models;
 
-import java.sql.Date;
-import java.sql.Time;
+import java.io.Serializable;
 
-public class Movies {
+public class Movies implements Serializable {
     private int movie_id;
     private int category_id;
     private String movie_name;
     private String movie_description;
     private String movie_trailer;
-    private Date movie_release;
+    private String movie_release;
     private String movie_poster;
     private String movie_length;
 
     public Movies() {
     }
 
-    public Movies(String movie_length, int category_id, String movie_poster, Date movie_release, String movie_trailer, String movie_description, String movie_name, int movie_id) {
+    public Movies(String movie_length, int category_id, String movie_poster, String movie_release, String movie_trailer, String movie_description, String movie_name, int movie_id) {
         this.movie_id = movie_id;
         this.movie_name = movie_name;
         this.category_id = category_id;
@@ -51,11 +50,11 @@ public class Movies {
         this.movie_poster = movie_poster;
     }
 
-    public Date getMovie_release() {
+    public String getMovie_release() {
         return movie_release;
     }
 
-    public void setMovie_release(Date movie_release) {
+    public void setMovie_release(String movie_release) {
         this.movie_release = movie_release;
     }
 

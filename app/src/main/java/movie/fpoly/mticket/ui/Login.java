@@ -6,10 +6,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import movie.fpoly.mticket.R;
+import movie.fpoly.mticket.ui_manager.Administration;
 
 public class Login extends AppCompatActivity {
     private EditText username, password;

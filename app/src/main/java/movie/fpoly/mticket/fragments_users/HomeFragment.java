@@ -17,9 +17,7 @@ import java.util.List;
 
 import me.relex.circleindicator.CircleIndicator3;
 import movie.fpoly.mticket.R;
-import movie.fpoly.mticket.adapters.PhimAdapter;
-import movie.fpoly.mticket.adapters.SliderAdapter;
-import movie.fpoly.mticket.models.Phim_example;
+import movie.fpoly.mticket.adapters_user.SliderAdapter;
 import movie.fpoly.mticket.models.Photo_example;
 import movie.fpoly.mticket.services.DepthPageTransformer;
 
@@ -28,7 +26,6 @@ public class HomeFragment extends Fragment {
     private CircleIndicator3 circleIndicator3;
     private List<Photo_example> list;
     private RecyclerView rvPhim;
-    private PhimAdapter phimAdapter;
     private Handler handler = new Handler();
     private Runnable runnable = new Runnable() {
         @Override
@@ -50,11 +47,8 @@ public class HomeFragment extends Fragment {
         viewPager2 = view.findViewById(R.id.viewpager2);
         circleIndicator3 = view.findViewById(R.id.circle3);
         rvPhim = view.findViewById(R.id.rvPhim);
-        phimAdapter = new PhimAdapter(getContext());
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
         rvPhim.setLayoutManager(gridLayoutManager);
-        phimAdapter.setData(getPhimList());
-        rvPhim.setAdapter(phimAdapter);
 
         list = getPhotoList();
         SliderAdapter sliderAdapter = new SliderAdapter(list);
@@ -80,16 +74,7 @@ public class HomeFragment extends Fragment {
         photoList.add(new Photo_example(R.drawable.anh3));
         return photoList;
     }
-
-    private List<Phim_example> getPhimList() {
-        List<Phim_example> phimList = new ArrayList<>();
-        phimList.add(new Phim_example("CƯỜI XUYÊN BIÊN GIỚI", "", "", "", "", 0, R.drawable.phim1));
-        phimList.add(new Phim_example("VÕ SĨ GIÁC ĐẤU II", "", "", "", "", 0, R.drawable.phim2));
-        phimList.add(new Phim_example("MẬT MÃ ĐỎ", "", "", "", "", 0, R.drawable.phim3));
-        phimList.add(new Phim_example("ĐÔI BẠN HỌC YÊU", "", "", "", "", 0, R.drawable.phim4));
-        return phimList;
-    }
-
+    
     @Override
     public void onPause() {
         super.onPause();

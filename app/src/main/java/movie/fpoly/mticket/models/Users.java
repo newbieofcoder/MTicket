@@ -1,14 +1,15 @@
 package movie.fpoly.mticket.models;
 
-public class Users {
+import java.io.Serializable;
+
+public class Users implements Serializable {
     private int user_id;
     private String username;
     private String password;
     private String email;
     private String phone;
 
-    public Users(int user_id, String username, String password, String email, String phone) {
-        this.user_id = user_id;
+    public Users(String username, String password, String email, String phone) {
         this.username = username;
         this.password = password;
         this.email = email;

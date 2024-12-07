@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".ui.Administration"
+    tools:context=".ui_manager.Administration"
     tools:openDrawer="start">
     <include
         android:id="@+id/app_bar_main"

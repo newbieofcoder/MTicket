@@ -1,18 +1,18 @@
-package movie.fpoly.mticket.adapters;
+package movie.fpoly.mticket.adapters_user;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import movie.fpoly.mticket.fragments_users.CategoryFragment;
+import movie.fpoly.mticket.fragments_users.CategoriesFragment;
 import movie.fpoly.mticket.fragments_users.HomeFragment;
 import movie.fpoly.mticket.fragments_users.ProfileFragment;
 import movie.fpoly.mticket.fragments_users.TicketFragment;
 
-public class ViewPagerAdapter extends FragmentStateAdapter {
+public class ViewPager2Adapter extends FragmentStateAdapter {
 
-    public ViewPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
+    public ViewPager2Adapter(@NonNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);
     }
 
@@ -21,7 +21,7 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position) {
             case 1:
-                return new CategoryFragment();
+                return new CategoriesFragment();
             case 2:
                 return new TicketFragment();
             case 3:

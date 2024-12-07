@@ -34,6 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="Username"
+            android:text="admin"
             android:textColor="@color/white"
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -54,6 +55,7 @@
             android:layout_height="match_parent"
             android:hint="Password"
             android:inputType="textPassword"
+            android:text="admin"
             android:textColor="@color/white"
             android:textSize="16sp" />
     </com.google.android.material.textfield.TextInputLayout>

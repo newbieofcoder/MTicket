@@ -38,21 +38,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String CREATE_TABLE_SEATS = "CREATE TABLE SEATS (" +
                 "seat_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "seat_type INTEGER NOT NULL, " +
-                "room_id INTEGER NOT NULL, " +
+                "room_id INTEGER REFERENCES ROOM(room_id), " +
                 "row_seat TEXT NOT NULL, " +
                 "number INTEGER NOT NULL)";
         db.execSQL(CREATE_TABLE_SEATS);
 
         String CREATE_TABLE_SCHEDULE = "CREATE TABLE SCHEDULE (" +
                 "schedule_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "movie_id INTEGER NOT NULL, " +
-                "room_id INTEGER NOT NULL, " +
+                "movie_id INTEGER REFERENCES MOVIES(movie_id), " +
+                "room_id INTEGER REFERENCES ROOM(room_id), " +
                 "schedule_date DATE NOT NULL)";
         db.execSQL(CREATE_TABLE_SCHEDULE);
 
         String CREATE_TABLE_ROOM = "CREATE TABLE ROOM (" +
                 "room_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "cinema_id INTEGER NOT NULL, " +
+                "cinema_id INTEGER REFERENCES CINEMAS(cinema_id), " +
                 "room_name TEXT NOT NULL)";
         db.execSQL(CREATE_TABLE_ROOM);
 
@@ -69,9 +69,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         String CREATE_TABLE_BOOKING = "CREATE TABLE BOOKING (" +
                 "booking_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "user_id INTEGER NOT NULL, " +
-                "schedule_id INTEGER NOT NULL, " +
-                "seat_id INTEGER NOT NULL, " +
+                "user_id INTEGER REFERENCES USERS(user_id), " +
+                "schedule_id INTEGER REFERENCES SCHEDULE(schedule_id), " +
+                "seat_id INTEGER REFERENCES SEATS(seat_id), " +
                 "price DOUBLE NOT NULL, " +
                 "seat_status INTEGER NOT NULL)";
         db.execSQL(CREATE_TABLE_BOOKING);

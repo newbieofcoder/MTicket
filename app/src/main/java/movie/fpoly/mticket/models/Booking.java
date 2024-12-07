@@ -1,6 +1,8 @@
 package movie.fpoly.mticket.models;
 
-public class Booking {
+import java.io.Serializable;
+
+public class Booking implements Serializable {
     private int booking_id;
     private int user_id;
     private int schedule_id;

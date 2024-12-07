@@ -1,6 +1,8 @@
 package movie.fpoly.mticket.models;
 
-public class Cinemas {
+import java.io.Serializable;
+
+public class Cinemas implements Serializable {
     private int cinema_id;
     private String cinema_name;
     private String cinema_address;
@@ -8,8 +10,7 @@ public class Cinemas {
     public Cinemas() {
     }
 
-    public Cinemas(int cinema_id, String cinema_name, String cinema_address) {
-        this.cinema_id = cinema_id;
+    public Cinemas(String cinema_name, String cinema_address) {
         this.cinema_name = cinema_name;
         this.cinema_address = cinema_address;
     }

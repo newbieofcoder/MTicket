@@ -17,10 +17,16 @@
         android:theme="@style/Theme.MTicket"
         tools:targetApi="31">
         <activity
-            android:name=".ui.Administration"
+            android:name=".ui_manager.SeatManagement"
             android:exported="false" />
         <activity
-            android:name=".ui.FilmInformation"
+            android:name=".ui_manager.UserInfo"
+            android:exported="false" />
+        <activity
+            android:name=".ui_manager.Administration"
+            android:exported="false" />
+        <activity
+            android:name=".ui.FilmInfo"
             android:exported="false" />
         <activity
             android:name=".ui.Register"
