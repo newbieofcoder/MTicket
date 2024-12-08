@@ -37,9 +37,6 @@ public class Home extends AppCompatActivity {
                         bottomNavigationView.getMenu().findItem(R.id.category).setChecked(true);
                         break;
                     case 2:
-                        bottomNavigationView.getMenu().findItem(R.id.ticket).setChecked(true);
-                        break;
-                    case 3:
                         bottomNavigationView.getMenu().findItem(R.id.profile).setChecked(true);
                         break;
                 }
@@ -51,10 +48,8 @@ public class Home extends AppCompatActivity {
                 viewPager.setCurrentItem(0);
             } else if (item.getItemId() == R.id.category) {
                 viewPager.setCurrentItem(1);
-            } else if (item.getItemId() == R.id.ticket) {
-                viewPager.setCurrentItem(2);
             } else if (item.getItemId() == R.id.profile) {
-                viewPager.setCurrentItem(3);
+                viewPager.setCurrentItem(2);
             }
             return true;
         });

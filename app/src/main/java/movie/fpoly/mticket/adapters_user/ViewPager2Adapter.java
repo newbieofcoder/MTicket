@@ -8,7 +8,6 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import movie.fpoly.mticket.fragments_users.CategoriesFragment;
 import movie.fpoly.mticket.fragments_users.HomeFragment;
 import movie.fpoly.mticket.fragments_users.ProfileFragment;
-import movie.fpoly.mticket.fragments_users.TicketFragment;
 
 public class ViewPager2Adapter extends FragmentStateAdapter {
 
@@ -23,8 +22,6 @@ public class ViewPager2Adapter extends FragmentStateAdapter {
             case 1:
                 return new CategoriesFragment();
             case 2:
-                return new TicketFragment();
-            case 3:
                 return new ProfileFragment();
             default:
                 return new HomeFragment();
@@ -33,6 +30,6 @@ public class ViewPager2Adapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return 4;
+        return 3;
     }
 }
