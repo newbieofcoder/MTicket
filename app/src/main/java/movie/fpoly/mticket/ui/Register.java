@@ -95,6 +95,16 @@ public class Register extends AppCompatActivity {
     }
 
     private void registerWithUsernameAndPassword(String username, String password) {
+        Users users = new Users();
+        users.setUsername(username);
+        users.setPassword(password);
+        for (Users user : usersList) {
+            if (user.getUsername().equals(username)) {
+                Toast.makeText(this, "Tên đăng nhập đã tồn tại", Toast.LENGTH_SHORT).show();
+                return;
+            }
+        }
+        userDao.insertUser(users);
     }
 
     private boolean isValid(String password) {
