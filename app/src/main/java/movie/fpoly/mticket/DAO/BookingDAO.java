@@ -31,7 +31,6 @@ public class BookingDAO {
                 booking.setSchedule_id(cursor.getInt(2));
                 booking.setSeat_id(cursor.getInt(3));
                 booking.setPrice(cursor.getDouble(4));
-                booking.setSeat_status(cursor.getInt(5));
                 list.add(booking);
             } while (cursor.moveToNext());
         }
@@ -45,7 +44,6 @@ public class BookingDAO {
         contentValues.put("schedule_id", booking.getSchedule_id());
         contentValues.put("seat_id", booking.getSeat_id());
         contentValues.put("price", booking.getPrice());
-        contentValues.put("seat_status", booking.getSeat_status());
         return db.insert("BOOKING", null, contentValues);
     }
 
@@ -55,7 +53,6 @@ public class BookingDAO {
         contentValues.put("schedule_id", booking.getSchedule_id());
         contentValues.put("seat_id", booking.getSeat_id());
         contentValues.put("price", booking.getPrice());
-        contentValues.put("seat_status", booking.getSeat_status());
         return db.update("BOOKING", contentValues, "booking_id = ?", new String[]{String.valueOf(booking.getBooking_id())});
     }
 

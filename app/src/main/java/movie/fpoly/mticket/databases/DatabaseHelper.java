@@ -28,19 +28,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "movie_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "category_id INTEGER NOT NULL, " +
                 "movie_name TEXT NOT NULL, " +
-                "movie_trailer TEXT NOT NULL, " +
                 "movie_description TEXT NOT NULL, " +
+                "movie_trailer TEXT NOT NULL, " +
                 "movie_release DATE NOT NULL, " +
-                "movie_poster TEXT NOT NULL, " +
+                "movie_poster BLOB NOT NULL, " +
                 "movie_length TEXT NOT NULL)" ;
         db.execSQL(CREATE_TABLE_MOVIES);
 
         String CREATE_TABLE_SEATS = "CREATE TABLE SEATS (" +
                 "seat_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "seat_type INTEGER NOT NULL, " +
                 "room_id INTEGER REFERENCES ROOM(room_id), " +
                 "row_seat TEXT NOT NULL, " +
-                "number INTEGER NOT NULL)";
+                "number INTEGER NOT NULL, " +
+                "seat_status INTEGER NOT NULL)";
         db.execSQL(CREATE_TABLE_SEATS);
 
         String CREATE_TABLE_SCHEDULE = "CREATE TABLE SCHEDULE (" +
@@ -72,8 +72,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "user_id INTEGER REFERENCES USERS(user_id), " +
                 "schedule_id INTEGER REFERENCES SCHEDULE(schedule_id), " +
                 "seat_id INTEGER REFERENCES SEATS(seat_id), " +
-                "price DOUBLE NOT NULL, " +
-                "seat_status INTEGER NOT NULL)";
+                "price DOUBLE NOT NULL)";
         db.execSQL(CREATE_TABLE_BOOKING);
     }
 

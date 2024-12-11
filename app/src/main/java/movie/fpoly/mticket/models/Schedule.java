@@ -8,8 +8,7 @@ public class Schedule implements Serializable {
     private int room_id;
     private String schedule_date;
 
-    public Schedule(int schedule_id, int movie_id, int room_id, String schedule_date) {
-        this.schedule_id = schedule_id;
+    public Schedule(int movie_id, int room_id, String schedule_date) {
         this.movie_id = movie_id;
         this.room_id = room_id;
         this.schedule_date = schedule_date;

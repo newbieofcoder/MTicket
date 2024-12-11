@@ -23,7 +23,6 @@ import movie.fpoly.mticket.fragment_manager.CinemaFragment;
 import movie.fpoly.mticket.fragment_manager.MovieFragment;
 import movie.fpoly.mticket.fragment_manager.RoomFragment;
 import movie.fpoly.mticket.fragment_manager.ScheduleFragment;
-import movie.fpoly.mticket.fragment_manager.SeatFragment;
 import movie.fpoly.mticket.fragment_manager.UserFragment;
 import movie.fpoly.mticket.ui.Login;
 
@@ -88,10 +87,6 @@ public class Administration extends AppCompatActivity implements NavigationView.
             replaceFragment(new RoomFragment());
             toolbar.setTitle("Quản lý phòng chiếu");
             navigationView.setCheckedItem(R.id.nav_room);
-        } else if (id == R.id.nav_seats) {
-            replaceFragment(new SeatFragment());
-            toolbar.setTitle("Quản lý ghế ngồi");
-            navigationView.setCheckedItem(R.id.nav_seats);
         } else if (id == R.id.nav_logout) {
             Toast.makeText(this, "Đăng xuất thành công", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, Login.class));

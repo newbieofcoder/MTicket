@@ -11,9 +11,17 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.List;
+
+import movie.fpoly.mticket.DAO.UserDao;
 import movie.fpoly.mticket.R;
+import movie.fpoly.mticket.databases.DatabaseHelper;
+import movie.fpoly.mticket.models.Users;
 
 public class Register extends AppCompatActivity {
+    private DatabaseHelper databaseHelper;
+    private UserDao userDao;
+    private List<Users> usersList;
     private static final String PASSWORD_REGEX_LONG = "^.{6,}$";
     private static final String PASSWORD_REGEX_LETTER = "^(?=.*[a-z])(?=.*[A-Z]).{1,}$";
     private static final String PASSWORD_REGEX_NUMBER = "^(?=.*\\d).{1,}$";
@@ -26,6 +34,9 @@ public class Register extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        databaseHelper = new DatabaseHelper(this);
+        userDao = new UserDao(this);
+        usersList = userDao.getUsers("SELECT * FROM USERS");
 
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);

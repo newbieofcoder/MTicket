@@ -8,18 +8,16 @@ public class Booking implements Serializable {
     private int schedule_id;
     private int seat_id;
     private double price;
-    private int seat_status;
 
     public Booking() {
     }
 
-    public Booking(int booking_id, int user_id, int schedule_id, int seat_id, double price, int seat_status) {
+    public Booking(int booking_id, int user_id, int schedule_id, int seat_id, double price) {
         this.booking_id = booking_id;
         this.user_id = user_id;
         this.schedule_id = schedule_id;
         this.seat_id = seat_id;
         this.price = price;
-        this.seat_status = seat_status;
     }
 
     public int getBooking_id() {
@@ -60,13 +58,5 @@ public class Booking implements Serializable {
 
     public void setPrice(double price) {
         this.price = price;
-    }
-
-    public int getSeat_status() {
-        return seat_status;
-    }
-
-    public void setSeat_status(int seat_status) {
-        this.seat_status = seat_status;
     }
 }

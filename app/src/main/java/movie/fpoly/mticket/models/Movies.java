@@ -1,5 +1,7 @@
 package movie.fpoly.mticket.models;
 
+import android.widget.ImageView;
+
 import java.io.Serializable;
 
 public class Movies implements Serializable {
@@ -9,21 +11,26 @@ public class Movies implements Serializable {
     private String movie_description;
     private String movie_trailer;
     private String movie_release;
-    private String movie_poster;
+    private byte[] movie_poster;
     private String movie_length;
 
     public Movies() {
     }
 
-    public Movies(String movie_length, int category_id, String movie_poster, String movie_release, String movie_trailer, String movie_description, String movie_name, int movie_id) {
-        this.movie_id = movie_id;
-        this.movie_name = movie_name;
+    public Movies(int category_id,
+                  String movie_name,
+                  String movie_description,
+                  String movie_trailer,
+                  String movie_release,
+                  byte[] movie_poster,
+                  String movie_length) {
         this.category_id = category_id;
-        this.movie_length = movie_length;
-        this.movie_poster = movie_poster;
-        this.movie_release = movie_release;
-        this.movie_trailer = movie_trailer;
+        this.movie_name = movie_name;
         this.movie_description = movie_description;
+        this.movie_trailer = movie_trailer;
+        this.movie_release = movie_release;
+        this.movie_poster = movie_poster;
+        this.movie_length = movie_length;
     }
 
     public int getCategory_id() {
@@ -42,11 +49,11 @@ public class Movies implements Serializable {
         this.movie_length = movie_length;
     }
 
-    public String getMovie_poster() {
+    public byte[] getMovie_poster() {
         return movie_poster;
     }
 
-    public void setMovie_poster(String movie_poster) {
+    public void setMovie_poster(byte[] movie_poster) {
         this.movie_poster = movie_poster;
     }
 

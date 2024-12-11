@@ -11,12 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import movie.fpoly.mticket.R;
-import movie.fpoly.mticket.models.Photo_example;
+import movie.fpoly.mticket.models.Photo_slider;
 
 public class SliderAdapter extends RecyclerView.Adapter<SliderAdapter.SliderViewHolder> {
-    private final List<Photo_example> photoList;
+    private final List<Photo_slider> photoList;
 
-    public SliderAdapter(List<Photo_example> photoList) {
+    public SliderAdapter(List<Photo_slider> photoList) {
         this.photoList = photoList;
     }
 
@@ -29,7 +29,7 @@ public class SliderAdapter extends RecyclerView.Adapter<SliderAdapter.SliderView
 
     @Override
     public void onBindViewHolder(@NonNull SliderViewHolder sliderViewHolder, int i) {
-        Photo_example photo = photoList.get(i);
+        Photo_slider photo = photoList.get(i);
         if (photo == null) {
             return;
         }

@@ -65,10 +65,14 @@ public class RoomFragment extends Fragment {
             builder.setPositiveButton("OK", (dialog, which) -> {
                 String roomName = edtRoomName.getText().toString();
                 Cinemas cinema = (Cinemas) spCinemaName.getSelectedItem();
-                Room room = new Room(cinema.getCinema_id(), roomName);
-                roomDao.insertRoom(room);
-                Toast.makeText(requireContext(), "Add room success", Toast.LENGTH_SHORT).show();
-                updateRV();
+                if (roomName.isEmpty()) {
+                    Toast.makeText(requireContext(), "Vui lòng nhập tên phòng chiếu", Toast.LENGTH_SHORT).show();
+                } else {
+                    Room room = new Room(cinema.getCinema_id(), roomName);
+                    roomDao.insertRoom(room);
+                    updateRV();
+                    Toast.makeText(requireContext(), "Thêm phòng chiếu thành công", Toast.LENGTH_SHORT).show();
+                }
             });
             builder.setNegativeButton("Cancel", (dialog, which) -> {
                 dialog.cancel();
@@ -84,12 +88,32 @@ public class RoomFragment extends Fragment {
         roomsList = roomDao.getRoom("SELECT * FROM ROOM");
         cinemasList = new ArrayList<>();
         cinemasList = cinemaDAO.getCinemas("SELECT * FROM CINEMAS");
-        roomAdapter = new RoomAdapter(requireActivity(), roomsList, cinemasList, room -> {
-            Intent intent = new Intent(requireActivity(), SeatManagement.class);
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("room", room);
-            intent.putExtras(bundle);
-            startActivity(intent);
+        roomAdapter = new RoomAdapter(requireActivity(), roomsList, cinemasList, new RoomAdapter.OnRoomItemClickListener() {
+            @Override
+            public void OnItemClick(Room room) {
+                Intent intent = new Intent(requireActivity(), SeatManagement.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("room", room);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+
+            @Override
+            public void OnLongClick(Room room) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+                builder.setTitle("Xóa phòng chiếu");
+                builder.setMessage("Bạn có muốn xóa phòng chiếu này?");
+                builder.setPositiveButton("OK", (dialog, which) -> {
+                    roomDao.deleteRoom(room.getRoom_id());
+                    Toast.makeText(requireContext(), "Xóa phòng chiếu thành công", Toast.LENGTH_SHORT).show();
+                    updateRV();
+                });
+                builder.setNegativeButton("Cancel", (dialog, which) -> {
+                    dialog.cancel();
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
         });
         rvRoom.setLayoutManager(new LinearLayoutManager(requireContext()));
         rvRoom.setHasFixedSize(true);

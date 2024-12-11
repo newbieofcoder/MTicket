@@ -4,17 +4,16 @@ import java.io.Serializable;
 
 public class Seats implements Serializable {
     private int seat_id;
-    private int seat_type;
     private int room_id;
     private String row_seat;
     private int number;
+    private boolean seat_status;
 
-    public Seats(int seat_id, int seat_type, int room_id, String row_seat, int number) {
-        this.seat_id = seat_id;
-        this.seat_type = seat_type;
+    public Seats(int room_id, String row_seat, int number, boolean seat_status) {
         this.room_id = room_id;
         this.row_seat = row_seat;
         this.number = number;
+        this.seat_status = seat_status;
     }
 
     public Seats() {
@@ -26,14 +25,6 @@ public class Seats implements Serializable {
 
     public void setSeat_id(int seat_id) {
         this.seat_id = seat_id;
-    }
-
-    public int getSeat_type() {
-        return seat_type;
-    }
-
-    public void setSeat_type(int seat_type) {
-        this.seat_type = seat_type;
     }
 
     public int getRoom_id() {
@@ -58,5 +49,13 @@ public class Seats implements Serializable {
 
     public void setNumber(int number) {
         this.number = number;
+    }
+
+    public boolean isSeat_status() {
+        return seat_status;
+    }
+
+    public void setSeat_status(boolean seat_status) {
+        this.seat_status = seat_status;
     }
 }

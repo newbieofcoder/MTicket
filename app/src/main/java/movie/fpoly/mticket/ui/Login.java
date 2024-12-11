@@ -8,10 +8,19 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import movie.fpoly.mticket.DAO.UserDao;
 import movie.fpoly.mticket.R;
+import movie.fpoly.mticket.databases.DatabaseHelper;
+import movie.fpoly.mticket.models.Users;
 import movie.fpoly.mticket.ui_manager.Administration;
 
 public class Login extends AppCompatActivity {
+    private DatabaseHelper databaseHelper;
+    private UserDao userDAO;
+    private List<Users> usersList = new ArrayList<>();
     private EditText username, password;
     private TextView login, register;
 
@@ -19,6 +28,9 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        databaseHelper = new DatabaseHelper(this);
+        userDAO = new UserDao(this);
+        usersList = userDAO.getUsers("SELECT * FROM USERS");
 
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
@@ -35,10 +47,19 @@ public class Login extends AppCompatActivity {
                 Intent intent = new Intent( Login.this, Administration.class);
                 startActivity(intent);
                 finish();
-            } else if (usernameLogin.equals("user") && passwordLogin.equals("user")) {
-                Intent intent = new Intent(Login.this, Home.class);
-                startActivity(intent);
-                finish();
+            } else {
+                for (int i = 0; i < usersList.size(); i++) {
+                    if (usernameLogin.equals(usersList.get(i).getUsername()) && passwordLogin.equals(usersList.get(i).getPassword())) {
+                        Intent intent = new Intent(Login.this, Home.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("user", usersList.get(i));
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                        finish();
+                        Toast.makeText(this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                        break;
+                    }
+                }
             }
         });
 

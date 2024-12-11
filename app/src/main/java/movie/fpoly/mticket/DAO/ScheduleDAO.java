@@ -37,7 +37,7 @@ public class ScheduleDAO {
         return list;
     }
 
-    public long addSchedule(Schedule schedule) {
+    public long insertSchedule(Schedule schedule) {
         ContentValues contentValues = new ContentValues();
         contentValues.put("movie_id", schedule.getMovie_id());
         contentValues.put("room_id", schedule.getRoom_id());
@@ -45,7 +45,7 @@ public class ScheduleDAO {
         return db.insert("schedule", null, contentValues);
     }
 
-    public long insertSchedule(Schedule schedule) {
+    public long updateSchedule(Schedule schedule) {
         ContentValues contentValues = new ContentValues();
         contentValues.put("movie_id", schedule.getMovie_id());
         contentValues.put("room_id", schedule.getRoom_id());

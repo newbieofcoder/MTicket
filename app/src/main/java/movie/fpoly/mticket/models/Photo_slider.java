@@ -1,13 +1,13 @@
 package movie.fpoly.mticket.models;
 
-public class Photo_example {
+public class Photo_slider {
     private int resourceId;
 
-    public Photo_example(int resourceId) {
+    public Photo_slider(int resourceId) {
         this.resourceId = resourceId;
     }
 
-    public Photo_example() {
+    public Photo_slider() {
     }
 
     public int getResourceId() {

@@ -24,6 +24,7 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
 
     public interface OnRoomItemClickListener{
         void OnItemClick(Room room);
+        void OnLongClick(Room room);
     }
 
     public RoomAdapter(Context context, List<Room> roomList, List<Cinemas> cinemasList, OnRoomItemClickListener onRoomItemClickListener) {
@@ -49,8 +50,12 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
                 roomViewHolder.tvCinema_name.setText("Rạp chiếu: " + cinema.getCinema_name());
             }
         }
-        roomViewHolder.ln_Room.setOnClickListener(v -> {
+        roomViewHolder.itemView.setOnClickListener(v -> {
             onRoomItemClickListener.OnItemClick(room);
+        });
+        roomViewHolder.itemView.setOnLongClickListener(v -> {
+            onRoomItemClickListener.OnLongClick(room);
+            return true;
         });
     }
 
@@ -62,13 +67,11 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
     public static class RoomViewHolder extends RecyclerView.ViewHolder{
         TextView tvRoom_name;
         TextView tvCinema_name;
-        LinearLayout ln_Room;
 
         public RoomViewHolder(@NonNull View itemView) {
             super(itemView);
             tvRoom_name = itemView.findViewById(R.id.txtRoom_name);
             tvCinema_name = itemView.findViewById(R.id.txtCinema_name);
-            ln_Room = itemView.findViewById(R.id.ln_Room);
         }
     }
 }

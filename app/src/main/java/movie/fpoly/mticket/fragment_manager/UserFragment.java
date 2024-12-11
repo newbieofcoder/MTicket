@@ -46,6 +46,7 @@ public class UserFragment extends Fragment {
         userDao = new UserDao(requireContext());
         rvUser = view.findViewById(R.id.rv_User);
         add_user = view.findViewById(R.id.add_user);
+        
         updateRV();
         add_user.setOnClickListener(v -> {
             View view1 = getLayoutInflater().inflate(R.layout.dialog_add_user, null);
